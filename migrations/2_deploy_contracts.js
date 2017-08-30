@@ -1,0 +1,13 @@
+var ConvertLib = artifacts.require("./ConvertLib.sol");
+var MetaCoin = artifacts.require("./MetaCoin.sol");
+var Campaign = artifacts.require("./Campaign.sol");
+
+var campaignDuration = 5;
+var campaignGoal = 1000;
+
+module.exports = function(deployer) {
+  deployer.deploy(ConvertLib);
+  deployer.link(ConvertLib, MetaCoin);
+  deployer.deploy(MetaCoin);
+  deployer.deploy(Campaign, campaignDuration, campaignGoal);
+};
